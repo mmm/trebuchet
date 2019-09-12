@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#import json
+import json
 from flask import Flask #, request
 
 app = Flask(__name__)
@@ -13,4 +13,8 @@ def default_response():
 @app.route("/solution")
 def get_solution():
     get_solution_event = {'event_type': 'get_solution'}
-    return "Here is your Solution!\n"
+    solution = {
+        'angle': '42degrees',
+        'mass': '16stone'
+    }
+    return json.dumps(solution)

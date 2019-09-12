@@ -1,5 +1,9 @@
 version: '3'
 services:
+  soldier:
+    build: soldier
+    depends_on:
+      - sorcerer
   sorcerer:
     build: sorcerer
     ports:
