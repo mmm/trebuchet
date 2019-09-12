@@ -1,15 +1,15 @@
-FROM ubuntu:xenial
-MAINTAINER Mark Mims <mark.mims@gmail.com>
+FROM golang:1.12-stretch
 
 RUN apt-get -qq update \
   && apt-get -yqq install \
     stress \
   && apt-get -yqq clean
 
-COPY sorcerer /usr/bin/
+ADD . /go/src/app
+WORKDIR /go/src/app
 
 ENV SORCERER_PORT=5000
 ENV SORCERER_THREADS=1
 ENV SORCERER_TIMEOUT=10
 
-CMD ["sorcerer"]
+CMD ["go", "run", "main.go"]
