@@ -5,4 +5,5 @@ default: sorcerer.pb.go
 	protoc $< --go_out=plugins=grpc:.
 
 clean:
+	@echo "---" $@ "---"
 	rm -f *.pb.go

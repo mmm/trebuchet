@@ -5,4 +5,5 @@ sorcerer.pb.go : ../sorcerer/sorcerer.proto
 	protoc $< -I ../sorcerer --go_out=plugins=grpc:.
 
 clean:
+	@echo "---" $@ "---"
 	rm -f *.pb.go
