@@ -60,18 +60,11 @@ func calculateSolution(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("sorcerer: handling request %s from %s", r.URL.Path, remote)
-	//doSomeWork()
-	//log.Printf("sorcerer: done with request %s from %s", r.URL.Path, remote)
-
-	//hostname, err := os.Hostname()
-	//if err != nil {
-	//log.Fatal("sorcerer: Hostname error ", err)
-	//}
-	//fmt.Fprintf(w, "Hello %s from %s\n", remote, hostname)
 
 	solution := Solution{"23degrees", "10stone"}
 	payload, err := json.Marshal(solution)
 	if err != nil {
+		log.Fatal("sorcerer: Payload error ", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
