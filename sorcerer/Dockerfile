@@ -1,9 +1,15 @@
-FROM python:3.7-alpine
-WORKDIR /code
-ENV FLASK_APP app.py
-ENV FLASK_RUN_HOST 0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["flask", "run"]
+FROM ubuntu:xenial
+MAINTAINER Mark Mims <mark.mims@gmail.com>
+
+RUN apt-get -qq update \
+  && apt-get -yqq install \
+    stress \
+  && apt-get -yqq clean
+
+COPY sorcerer /usr/bin/
+
+ENV SORCERER_PORT=5000
+ENV SORCERER_THREADS=1
+ENV SORCERER_TIMEOUT=10
+
+CMD ["sorcerer"]
