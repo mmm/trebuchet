@@ -2,9 +2,14 @@ version: '3'
 services:
   soldier:
     build: soldier
+    environment:
+      - SORCERER_HOST=sorcerer
+      - SORCERER_PORT=5001
     depends_on:
       - sorcerer
   sorcerer:
     build: sorcerer
-    ports:
-      - "5000:5000"
+    environment:
+      - SORCERER_PORT=5001
+    expose:
+      - "5000"

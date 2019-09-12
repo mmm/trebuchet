@@ -5,11 +5,15 @@ RUN apt-get -qq update \
     stress \
   && apt-get -yqq clean
 
-ADD . /go/src/app
-WORKDIR /go/src/app
+RUN go get github.com/pkg/errors \
+  && go get golang.org/x/net/context \
+  && go get google.golang.org/grpc
 
 ENV SORCERER_PORT=5000
 ENV SORCERER_THREADS=1
 ENV SORCERER_TIMEOUT=10
 
-CMD ["go", "run", "main.go"]
+ADD . /go/src/app
+WORKDIR /go/src/app
+
+CMD ["go", "run", "."]

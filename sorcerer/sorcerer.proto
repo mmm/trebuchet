@@ -1,0 +1,22 @@
+syntax = "proto3";
+package main;
+
+message Target {
+    // distance to target
+    double distance = 1; // meters
+
+    // wind, headwind (-) or tailwind (+)
+    double wind = 2; // meters per second
+}
+
+message Solution {
+    // trebuchet control angle
+    double angle = 1; // degrees
+
+    // projectile mass
+    double mass = 2; // kilograms
+}
+
+service SorcererService {
+    rpc FiringSolution(Target) returns (Solution) {}
+}
