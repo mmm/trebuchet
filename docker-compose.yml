@@ -1,6 +1,6 @@
 version: '3'
 services:
   sorcerer:
-    build: .
+    build: sorcerer
     ports:
       - "5000:5000"
