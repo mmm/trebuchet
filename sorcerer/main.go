@@ -12,8 +12,8 @@ import (
 type sorcererService struct{}
 
 func (s *sorcererService) FiringSolution(ctx context.Context, in *Target) (*Solution, error) {
-	log.Printf("sorcerer: received request for a target distance %0.2f in %0.2f wind", in.Distance, in.Wind)
-	return &Solution{Angle: 24.4, Mass: 10.0}, nil
+	log.Printf("sorcerer: received request for a target distance %0.2f m in %0.2f m/s wind", in.Distance, in.Wind)
+	return &Solution{Angle: 24.4 /* degrees */, Mass: 10.0 /* kg */}, nil
 }
 
 func main() {

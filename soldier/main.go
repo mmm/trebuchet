@@ -37,10 +37,10 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	r, err := c.FiringSolution(ctx, &Target{Distance: 60.0, Wind: -10.0})
+	r, err := c.FiringSolution(ctx, &Target{Distance: 60.0 /* m */, Wind: -10.0 /* m/s */})
 	if err != nil {
 		log.Fatal("soldier: Failed request for firing solution: ", err)
 	}
 
-	log.Printf("Solution: angle: %0.2f, mass: %0.2f", r.Angle, r.Mass)
+	log.Printf("Solution: angle: %0.2f degrees, mass: %0.2f kg", r.Angle, r.Mass)
 }

@@ -9,6 +9,14 @@ This uses docker-compose atm, but can be easily terraformed to use cloud run
 and/or k8s.
 
 
+## Background
+
+- A soldier has a trebuchet, the distance to a target, and the current wind
+  conditions
+- A sorcerer accepts that info and returns a firing solution to the soldier,
+  which consists of an angle of release and projectile mass.
+- Profit
+
 ## Setup
 
 You need a working go environment...
